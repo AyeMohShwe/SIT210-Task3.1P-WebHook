@@ -1,0 +1,20 @@
+# SIT210-Task3.1P-WebHook
+int led = D7;
+int lightSensor = A0;
+
+void setup()
+{
+    pinMode(led, OUTPUT);
+}
+
+void loop()
+{
+    digitalWrite(led, HIGH);
+    
+    String lightData = String(analogRead(lightSensor));
+    Particle.publish("light", lightData, PRIVATE);
+    delay(3000);
+    
+    digitalWrite(led, LOW);
+    delay(3000);
+}
